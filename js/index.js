@@ -72,18 +72,15 @@ var app = {
             });
         };
     },
-
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         $('#scan').click(this.scan);
         $('#loadDB').click(this.loadDB);
         $('#quitApp').click(this.quitApp);
     },
-
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
-
     scan: function() {
         try {    
             var scanner = cordova.require("cordova/plugin/BarcodeScanner");
@@ -94,10 +91,9 @@ var app = {
                 alert("Scanning failed: ", error); 
             });
         } catch (e) {
-            app.getPax('AAAAA');
+            app.getPax('ACAAA');
         }
     },
-
     loadDB: function() {
         $.getJSON( "http://shakso.com/paxList.htm", function( data ) {
             cb.webdb.open();
@@ -108,27 +104,28 @@ var app = {
             $('#status').html("Status: " + data.paxList.length + " pax loaded");
         });
     },
-
-
-
     getPax: function(code) {
-
-
-        tableOut="<p class='code'>Code: " + code + "</p>";
-        tableOut=tableOut + "<table class='paxTable'><tr><th>Firstname</th><th>Lastname</th><th>SeatOut</th><th>Seatback</th></tr>";
-
         cb.webdb.getPaxList(function(tx, rs) {
-            for (var i=0; i < rs.rows.length; i++) {
-                console.log(rs);
-                tableOut=tableOut + "<tr><td>" + rs.rows.item(i).firstName + "</td><td>"+ rs.rows.item(i).lastName + "</td><td>"+ rs.rows.item(i).seat + "</td></tr>";
-            }
-            tableOut=tableOut + "</table>";
+            tableOut="";
 
+            if (rs.rows.length != 0) {
+                tableOut="<p class='code'>Code: " + code + "</p>";
+                tableOut=tableOut + "<table class='paxTable'><tr><th>Firstname</th><th>Lastname</th><th>SeatOut</th><th>Seatback</th></tr>";
+
+                for (var i=0; i < rs.rows.length; i++) {
+                    console.log(rs);
+                    tableOut=tableOut + "<tr><td>" + rs.rows.item(i).firstName + "</td><td>"+ rs.rows.item(i).lastName + "</td><td>"+ rs.rows.item(i).seat + "</td></tr>";
+                }
+                
+                tableOut=tableOut + "</table>";
+                
+            } else {
+                tableOut="<p class='code'>Code: " + code + "</p><p>No such booking</p>";
+            }
+            
             $("#result").html(tableOut); 
-            console.log(tableOut);
         }, code);       
     },
-
     quitApp: function() {
         app.exitApp();
     }
