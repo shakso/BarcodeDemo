@@ -113,6 +113,6 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-.largeLink {
-    font-size:18px;
+a.largeLink {
+    font-size:48px;
 }
