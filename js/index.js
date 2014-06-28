@@ -76,7 +76,8 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         $('#scan').click(this.scan);
-         $('#loadDB').click(this.loadDB);
+        $('#loadDB').click(this.loadDB);
+        $('#quitApp').click(this.quitApp);
     },
 
     onDeviceReady: function() {
@@ -93,7 +94,7 @@ var app = {
                 alert("Scanning failed: ", error); 
             });
         } catch (e) {
-            app.getPax('AAAAB');
+            app.getPax('AAAAA');
         }
     },
 
@@ -112,7 +113,9 @@ var app = {
 
     getPax: function(code) {
 
-        tableOut="<table class='paxTable'>";
+
+        tableOut="<p class='code'>Code: " + code + "</p>";
+        tableOut=tableOut + "<table class='paxTable'><tr><th>Firstname</th><th>Lastname</th><th>SeatOut</th><th>Seatback</th></tr>";
 
         cb.webdb.getPaxList(function(tx, rs) {
             for (var i=0; i < rs.rows.length; i++) {
@@ -124,5 +127,10 @@ var app = {
             $("#result").html(tableOut); 
             console.log(tableOut);
         }, code);       
+    },
+
+    quitApp: function() {
+        app.exitApp();
     }
+
 };
