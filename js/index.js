@@ -71,25 +71,14 @@ var app = {
                 cb.webdb.onError);
             });
         };
-
-        $.getJSON( "http://shakso.com/paxList.htm", function( data ) {
-            cb.webdb.open();
-            cb.webdb.createTable();
-            $.each( data.paxList, function( key, val ) {
-                cb.webdb.add(val.code, val.firstName, val.lastName, val.seat);
-            });
-        });
     },
 
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         $('#scan').click(this.scan);
+         $('#loadDB').click(this.loadDB);
     },
 
-    // deviceready Event Handler
-    //
-    // The scope of `this` is the event. In order to call the `receivedEvent`
-    // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
@@ -104,13 +93,26 @@ var app = {
                 alert("Scanning failed: ", error); 
             });
         } catch (e) {
-            app.getPax('AAAAA');
+            app.getPax('AAAAB');
         }
     },
 
+    loadDB: function() {
+        $.getJSON( "http://shakso.com/paxList.htm", function( data ) {
+            cb.webdb.open();
+            cb.webdb.createTable();
+            $.each( data.paxList, function( key, val ) {
+                cb.webdb.add(val.code, val.firstName, val.lastName, val.seat);
+            });
+            $('#status').html("Status: " + data.paxList.length + " pax loaded");
+        });
+    },
+
+
+
     getPax: function(code) {
 
-        tableOut="<table border=1>";
+        tableOut="<table class='paxTable'>";
 
         cb.webdb.getPaxList(function(tx, rs) {
             for (var i=0; i < rs.rows.length; i++) {

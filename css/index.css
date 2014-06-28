@@ -41,7 +41,6 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
@@ -113,6 +112,51 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-a.largeLink {
-    font-size:48px;
+.paxTable {
+    background-color:#fff;
+    width:"80%";
+}
+
+
+.button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    box-shadow:inset 0px 1px 0px 0px #97c4fe;
+    background-color:#3d94f6;
+    -webkit-border-top-left-radius:11px;
+    -moz-border-radius-topleft:11px;
+    border-top-left-radius:11px;
+    -webkit-border-top-right-radius:11px;
+    -moz-border-radius-topright:11px;
+    border-top-right-radius:11px;
+    -webkit-border-bottom-right-radius:11px;
+    -moz-border-radius-bottomright:11px;
+    border-bottom-right-radius:11px;
+    -webkit-border-bottom-left-radius:11px;
+    -moz-border-radius-bottomleft:11px;
+    border-bottom-left-radius:11px;
+    text-indent:0;
+    border:1px solid #337fed;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:26px;
+    font-weight:bold;
+    font-style:normal;
+    height:70px;
+    line-height:70px;
+    width:200px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #1570cd;
+}.button:hover {
+    background-color:#1e62d0;
+}.button:active {
+    position:relative;
+    top:1px;
+}
+
+.larger {
+    height:120px;
+    line-height:120px;
 }
