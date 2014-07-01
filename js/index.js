@@ -127,7 +127,11 @@ var app = {
         }, code);       
     },
     quitApp: function() {
-        app.exitApp();
+        if (navigator.app && navigator.app.exitApp) {
+            navigator.app.exitApp();
+        } else if (navigator.device && navigator.device.exitApp) {
+            navigator.device.exitApp();
+        }
     }
 
 };
