@@ -24,24 +24,17 @@
 }
 
 body {
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
+    background-color:#FFFFFF;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:20px;
+    font-size:5px;
     height:100%;
     margin:0px;
     padding:0px;
     width:100%;
+}
+
+#logo {
+    padding-top:5px;
 }
 
 .app {
@@ -55,11 +48,12 @@ body {
 .paxTable {
     background-color:#fff;
     margin: 0px auto; 
+    font-size:10px;
 }
 
 p.code {
     font-weight:bold;
-    font-size:24px;
+    font-size:16px;
 }
 
 .button {
@@ -84,12 +78,12 @@ p.code {
     display:inline-block;
     color:#ffffff;
     font-family:Arial;
-    font-size:26px;
+    font-size:14px;
     font-weight:bold;
     font-style:normal;
-    height:70px;
-    line-height:70px;
-    width:200px;
+    height:30px;
+    line-height:30px;
+    width:120px;
     text-decoration:none;
     text-align:center;
     text-shadow:1px 1px 0px #1570cd;
@@ -101,8 +95,8 @@ p.code {
 }
 
 .larger {
-    height:5em;
-    line-height:5em;
-    font-size:48px;
-    width:10em;
+    height:50px;
+    line-height:50px;
+    font-size:24px;
+    width:200px;
 }

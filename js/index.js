@@ -91,7 +91,7 @@ var app = {
                 alert("Scanning failed: ", error); 
             });
         } catch (e) {
-            app.getPax('ACAAA');
+            app.getPax('AAAAA');
         }
     },
     loadDB: function() {
