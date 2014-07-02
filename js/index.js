@@ -189,7 +189,7 @@ var app = {
 
                     // Showing response data
                     if (response.responseCode == 200) {
-                        //$("#resultText").html("Success");
+                        $("#resultText").html("Success");
                     } else {
                         $("#resultText").html("Failed");
                     }
